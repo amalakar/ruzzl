@@ -234,8 +234,8 @@ Ruzzle.prototype.display = function(foundWords, wordDiv) {
             }
         };
     }
-    var interval = 3000;
-    var nextEventTime = interval;
+    var interval = 4500;
+    var nextEventTime = 0;
     for(var word in sortedWords){
         if(sortedWords.hasOwnProperty(word)){
             var path = sortedWords[word];
