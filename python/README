@@ -1,0 +1,5 @@
+I ran it as:
+vim input; cat input | python ./ruzzle.py  | tee words; open words
+
+This is the initial version which I convered to javascript. It may still have some bugs which I fixed in 
+the JS version. The input should have four character in a line.
