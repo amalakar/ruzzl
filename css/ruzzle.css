@@ -6,42 +6,79 @@ body {
   text-align: center;
 }
 
-.table {
-  width: 250px;
-  height: 250px;
+.table-container {
+  width: 300px;
+  height: 300px;
 }
 
 .letter0 {
-  background-color: #D3E500;
+  background-color: #E5D800;
 }
 
 .letter1 {
-  background-color: #BDE10B;
+  background-color: #A9E100;
 }
 .letter2 {
-  background-color: #A8DD17;
+  background-color: #64DD00;
 }
 .letter3 {
-  background-color: #93D922;
+  background-color: #21D900;
 }
 .letter4 {
-  background-color: #7ED52E;
+  background-color: #00D51F;
 }
 .letter5 {
-  background-color: #69D239;
+  background-color: #00D25E;
 }
 .letter6 {
-  background-color: #54CE45;
+  background-color: #00CE9A;
 }
 .letter7 {
-  background-color: #3FCA50;
+  background-color: #00C0CA;
 }
 .letter8 {
-  background-color: #2AC65C;
+  background-color: #0081C8;
 }
 .letter9{
-  background-color: #15C267;
+  background-color: #0044C2;
 }
 .letter10 {
-  background-color: #00BF73;
+  background-color: #0009BF;
+}
+
+.step {
+  z-index: 0;
+  font-size: 80px;
+  color: rgba(0,0,0,0.20);
+  float: right;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+}
+
+.letter {
+  z-index: 5;
+  font-size: 60px;
+  float: left;
+  font-weight: 1000;
+}
+
+.word {
+  font-size: 100px;
+  font-weight: 1000;
+}
+
+.line {
+    position: absolute; /* allows to position it anywhere */
+    width: 5px; /* your chosen line width */
+    background-color: #06a; /* line color */
+    z-index: 1000; /* make sure this is above your other elements */
+    -webkit-transform-origin: top left;
+    -moz-transform-origin: top left;
+    -o-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+    /* transform-origin sets rotation around top left (instead of the geometrical center) */
 }
