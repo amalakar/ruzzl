@@ -6,11 +6,6 @@ body {
   text-align: center;
 }
 
-.table-container {
-  width: 300px;
-  height: 300px;
-}
-
 .letter0 {
   background-color: #E5D800;
 }
@@ -47,12 +42,24 @@ body {
 }
 
 .step {
-  z-index: 0;
-  font-size: 80px;
+  font-size: 30px;
   color: rgba(0,0,0,0.20);
-  float: right;
+  position: relative; 
+  bottom: 3px; 
+  right:3px;
+  z-index: 30;
+  //float: right;
 }
 
+.table-container {
+  width: 400px;
+  height: 400px;
+}
+
+table#ruzzle-table td {
+  width: 80px;
+  height: 80px;
+}
 .cell {
   width: 100px;
   height: 100px;
@@ -72,8 +79,8 @@ body {
 
 .line {
     position: absolute; /* allows to position it anywhere */
-    width: 5px; /* your chosen line width */
-    background-color: #06a; /* line color */
+    width: 20px; /* your chosen line width */
+    background-color: rgba(0,0,0,0.20); /* line color */
     z-index: 1000; /* make sure this is above your other elements */
     -webkit-transform-origin: top left;
     -moz-transform-origin: top left;

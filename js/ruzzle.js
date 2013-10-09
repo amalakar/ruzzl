@@ -87,7 +87,37 @@ Ruzzle.prototype.getNeighbours = function(pos) {
 }
 
 Ruzzle.prototype.getDirection = function(from, to) {
-    
+    if(to.row < from.row) {
+        if(to.col < from.col) {
+            // North west
+            return 135;
+        } else if(to.col == from.col) {
+            // North
+            return 180;
+        } else {
+            // North east
+            return 225;
+        }
+    } else if(to.row > from.row) {
+        if(to.col < from.col) {
+            // South West
+            return 45;
+        } else if(to.col == from.col) {
+            // South
+            return 0;
+        } else {
+            // South East
+            return -45;
+        }
+    } else {
+        if(to.col < from.col) {
+            // West
+            return 90;
+        } else {
+            // East
+            return -90;
+        }
+    }
 }
 
 function Position(row, col) {
@@ -138,7 +168,7 @@ function sortByKeyLength(arr){
 }
 
 Ruzzle.prototype.displayGrid = function(tableDiv) {
-    var tableHtml = "<table class='table table-bordered'>";
+    var tableHtml = "<table class='table table-bordered' id='ruzzle-table'>";
     for(var row=0; row < this.maxRows; row++) {
         tableHtml += "<tr>";
         for(var col=0; col < this.maxCols; col++) {
@@ -154,17 +184,6 @@ Ruzzle.prototype.getCellId = function(row, col) {
     return "cell_" + row + "_" + col;
 }
 
-Ruzzle.Direction = {
-    N: 0,
-    NE: 1,
-    E: 2,
-    SE: 3,
-    S: 4,
-    SW: 5,
-    W: 6,
-    NW: 7
-}
-
 Ruzzle.prototype.display = function(foundWords, wordDiv) {
     var sortedWords = sortByKeyLength(foundWords);
      
@@ -177,11 +196,11 @@ Ruzzle.prototype.display = function(foundWords, wordDiv) {
                     var cell = $(cellId);
                     cell.removeClass();
                     cell.css({"class": "cell"});
-                     
                 }
             }
             // console.log(path);
             $(".step").remove();
+            $(".line").remove();
             for (var i=0; i < path.length; i++) {
                 var pos = path[i];
                 var cellId = "#" + ruzzle.getCellId(pos.row, pos.col);
@@ -189,12 +208,29 @@ Ruzzle.prototype.display = function(foundWords, wordDiv) {
                 cell.removeClass();
                 cell.addClass('letter' + i);
                 cell.addClass('cell');
-                var pos = cell.offset();
+                var cellOffset = cell.offset();
                 $("<div class='step'>" + i + "</div>")
-                    .css({"position": "fixed", "top": pos.top, "left": pos.left })
                     .appendTo(cell);
-
-                $("<div class='line'></div>")
+                // Not the last letter
+                if(i+1 < path.length) {
+                    var x = cellOffset.left + cell.width() / 2;
+                    var y = cellOffset.top + cell.height() / 2;
+                    
+                    var targetCell = $("#" + ruzzle.getCellId(path[i+1].row, path[i+1].col));
+                    var targetX = targetCell.offset().left + targetCell.width() / 2;
+                    var targetY = targetCell.offset().top + targetCell.height() / 2;
+                    var angle = ruzzle.getDirection(pos, path[i+1]); 
+                    var length = Math.sqrt( Math.pow(targetX - x, 2) + Math.pow(targetY - y, 2));
+                    $("<div class='line'></div>")
+                        .css({"position": "fixed", "top": y, "left": x})
+                        .css('-webkit-transform', 'rotate(' + angle + 'deg)')
+                        .css('-moz-transform', 'rotate(' + angle + 'deg)')
+                        .css('-o-transform', 'rotate(' + angle + 'deg)')
+                        .css('-ms-transform', 'rotate(' + angle + 'deg)')
+                        .css('transform', 'rotate(' + angle + 'deg)')
+                        .css('height', length)
+                        .appendTo(cell);
+                }
             }
         };
     }
