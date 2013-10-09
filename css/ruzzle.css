@@ -1,0 +1,47 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.table {
+  width: 250px;
+  height: 250px;
+}
+
+.letter0 {
+  background-color: #D3E500;
+}
+
+.letter1 {
+  background-color: #BDE10B;
+}
+.letter2 {
+  background-color: #A8DD17;
+}
+.letter3 {
+  background-color: #93D922;
+}
+.letter4 {
+  background-color: #7ED52E;
+}
+.letter5 {
+  background-color: #69D239;
+}
+.letter6 {
+  background-color: #54CE45;
+}
+.letter7 {
+  background-color: #3FCA50;
+}
+.letter8 {
+  background-color: #2AC65C;
+}
+.letter9{
+  background-color: #15C267;
+}
+.letter10 {
+  background-color: #00BF73;
+}
